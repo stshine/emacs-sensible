@@ -29,7 +29,7 @@
 (setq use-package-always-ensure t)
 
 
-;; No littering config
+;; no-littering keeps you .emacs.d clean
 (use-package no-littering
   :init
   (setq no-littering-var-directory (expand-file-name (locate-user-emacs-file "cache/"))))
@@ -46,12 +46,12 @@
   ;; User email address
   (user-mail-address "pu.stshine@gmail.com")
   ;;; UI tweaks
-  ;; Set background
+  ;; Set Emacs background
   (frame-background-mode 'light)
   ;; Inhibit startup screen and message
   (inhibit-startup-message t)
   (initial-scratch-message nil)
-  ;; Disable toolbar and scrollbar
+  ;; Hide toolbar and scrollbar
   (menu-bar-mode t)
   (tool-bar-mode nil)
   (scroll-bar-mode nil)
@@ -90,7 +90,7 @@
   (delete-selection-mode t)
   ;; `kill-line' kills the whole line at the start of a line
   (kill-whole-line t)
-  ;; Save unsaved clipboard into kill ring before kill operation
+  ;; Save unsaved clipboard into kill ring before killing operation
   (save-interprogram-paste-before-kill t)
   ;; Mouse yank at point instead of click
   (mouse-yank-at-point t)
@@ -183,6 +183,7 @@
   (helm-ff-file-name-history-use-recentf t)
   ;; Enable fuzzy matching for buffer switching
   (helm-buffers-fuzzy-matching           t)
+  ;; Display helm on top of window
   (helm-split-window-default-side   'above)
   (helm-echo-input-in-header-line        t)
   :config
