@@ -1,0 +1,26 @@
+#+TITLE: Minimal Emacs defaults that make sense
+
+This project aims to be a minimal Emacs configuration that provides sensible defaults and easy to built upon.
+
+* Features
+- Sensible defaults: This configuration enhance Emacs default settings thas gives beginners a welcoming experiance.
+- Out of box: Everything should works after installation that do not need further modification.
+- Minimal: With about 250 lines of carefully commented code, a beginner could easily learn, unstand, and change it.
+- Modern organized: Utilizing built in package manager and ~use-package~, This configuration represents a very clean structure that you can easily extend upon.
+- Discoverable: With built-in menus and ~which-key~ package, It is easier for beginners to learn Emacs funtionality and keybings.
+- Lisp editing: With ~smartparens~ and ~paren-face~, Emacs lisp editing experiance becomes a charm.
+
+* Installation
+
+** Install Emacs
+   First, you should have Emacs installed on your system. If it is not installed, See the [[https://www.gnu.org/software/emacs/download.html][instruction]].
+
+** Install this configuration
+   #+begin_src shell
+     wget https://raw.githubusercontent.com/stshine/emacs-sensible/master/init.el >> ~/.emacs.d/init.el
+   #+end_src
+
+** Run Emacs and explore!
+
+* What's next
+  If you are a emacs beginner, I recommend you to start from the tutorial. Click =Help= on the menu, then click =tutorial=. Go through it!
