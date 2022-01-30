@@ -127,7 +127,9 @@
   (set-fontset-font t charset chinese-font))
 (set-fontset-font t 'symbol symbol-font nil 'prepend)
 
-(load-theme 'leuven)
+(use-package solo-jazz-theme
+  :config
+  (load-theme 'solo-jazz t))
 
 (use-package spaceline
   :custom
