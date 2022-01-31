@@ -1,14 +1,15 @@
 #+TITLE: Minimal Emacs defaults that make sense
 
-This project aims to be a minimal Emacs configuration that provides sensible defaults and easy to built upon.
+This project aims to be a minimal Emacs configuration that enhance Emacs default editing experience, better appearance with font and theme settings, and UI tweaks. If you are a Emacs new comer that are willing to rolling out your own configuration rather than using one of the popular starter kits, this configuration provides a solid foundation for you to learn, tinker, and extend.
 
 * Features
+
 - Sensible defaults: This configuration enhance Emacs default settings thas gives beginners a welcoming experiance.
 - Out of box: Everything should works after installation that do not need further modification.
-- Minimal: With about 250 lines of carefully commented code, a beginner could easily learn, unstand, and change it.
-- Modern organized: Utilizing built in package manager and ~use-package~, This configuration represents a very clean structure that you can easily extend upon.
-- Discoverable: With built-in menus and ~which-key~ package, It is easier for beginners to learn Emacs funtionality and keybings.
-- Lisp editing: With ~smartparens~ and ~paren-face~, Emacs lisp editing experiance becomes a charm.
+- Minimal size: With about 250 lines of carefully commented code, a beginner could easily learn, unstand, and change it.
+- Modernized layout: Utilizing built in package manager and ~use-package~, This configuration represents a very clean structure that you can easily extend.
+- Discoverbility: With built-in menus and ~which-key~ package, It is easier for beginners to find and learn Emacs funtionality and keybings.
+- Lisp editing: With ~smartparens~ and ~paren-face~, Emacs lisp editing experience becomes a charm.
 
 * Installation
 
@@ -23,4 +24,27 @@ This project aims to be a minimal Emacs configuration that provides sensible def
 ** Run Emacs and explore!
 
 * What's next
-  If you are a emacs beginner, I recommend you to start from the tutorial. Click =Help= on the menu, then click =tutorial=. Go through it!
+
+** If you are a emacs beginner
+   I recommend you to start from the tutorial. Click =Help= on the menu, then click =tutorial=. Go through it!
+
+** Add new packages with ~use-package~
+   Code in this configuration is organized around the awesome [[https://github.com/jwiegley/use-package/projects][use-package]] declaration. the structure of code in ~use-package~ is mainly splited by a series of :keywords. For example, if you want to install the famous [[https://github.com/magit/magit][magit]] package, then can you add the following to ~init.el~:
+   #+begin_src elisp
+     (use-package magit
+       ;; :custom keywords can modify options that are declared using the custom system.
+       ;; I recommend to set variables that are customizible in this way because
+       ;; it can run additional configuring steps that custom system may have.
+       :custom
+       ;; Set all directories in '~/Programs' to be magit repositories
+       (magit-repository-directories '(("~/Programs" . 1)))
+       ;; :bind keywords add new key bindings
+       :bind
+       (;; Here we bind [f8] to magit dispatcher
+        ("<f8>" . #'magit-dispatch)
+        ;; Bind "C-<f8>" to magit status buffer
+        ("C-<f8>" . #'magit-status)))
+   #+end_src
+
+** Write elisp functions
+   Learn emacs lisp and put your code into ~emacs-func.el~. Happy hacking!
