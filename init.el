@@ -1,23 +1,23 @@
 ;;; init.el --- Emacs configuration entry point -*- lexical-binding: t -*-
 
 
-;; Save custom settings in a seperate file.
+;; Save custom settings in a seperate file
 (setq custom-file (locate-user-emacs-file "etc/emacs-custom.el"))
 (load custom-file t)
 
-;; Set higher GC threshold for performance.
+;; Set higher GC threshold for performance
 (setq gc-cons-threshold (* 100 1024 1024))
 ;; Set higher IPC read threshold for applications like `lsp-mode'
 (setq read-process-output-max (* 1 1024 1024))
 
 
-;;; Package manager seetings
+;;; Package manager settings
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("nongnu" . "https://elpa.nongnu.org/nongnu/")
                          ("melpa" . "https://melpa.org/packages/")))
-;; We have to set this manaully due to a bug on windows.
-(setq package-gnupghome-dir "~/.emacs.d/elpa/gnupg")
+;; We have to set this manaully due to a gnupg bug on windows.
+(setq package-gnupghome-dir (locate-user-emacs-file "elpa/gnupg"))
 (package-initialize)
 
 ;; Ensure use-package is available.
@@ -110,6 +110,8 @@
   ;;; Encoding settings
   (prefer-coding-system 'utf-8)
   (setq-default buffer-file-coding-system 'utf-8-unix)
+  :bind
+  (("<mouse-3>" .  'mouse-major-mode-menu))
   :delight eldoc-mode)
 
 
@@ -131,6 +133,7 @@
   :config
   (load-theme 'solo-jazz t))
 
+;; Decorate modeline
 (use-package spaceline
   :custom
   (powerline-default-separator 'arrow)
@@ -232,7 +235,7 @@
   :config
   (smartparens-global-mode 1)
   (show-smartparens-global-mode 1)
-  ;; For lisp files we enable pair balance and paredit bindings
+  ;; For lisp files we enable paredit-like structure editing
   :hook
   (smartparens-mode . (lambda ()
                         (when (member major-mode sp-lisp-modes)
