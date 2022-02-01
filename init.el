@@ -115,23 +115,24 @@
   :delight eldoc-mode)
 
 
-;;; Font settings
-(defvar monospace-font (first-avail-font "Fira Code" "Consolas" "SF Mono" "DejaVu Sans Mono"))
-(defvar serif-font (first-avail-font "Source Serif Pro" "Georgia" "Libertine"))
-(defvar chinese-font (first-avail-font "Microsoft YaHei UI" "PingFang SC" "Noto Sans SC"))
-(defvar symbol-font (first-avail-font "Segoe UI Symbol" "Apple Symbols" "Noto Sans Symbols"))
+;;; Font and theme settings
+(when (display-graphic-p)
+  (defvar monospace-font (first-avail-font "Fira Code" "Consolas" "SF Mono" "DejaVu Sans Mono"))
+  (defvar serif-font (first-avail-font "Source Serif Pro" "Georgia" "Libertine"))
+  (defvar chinese-font (first-avail-font "Microsoft YaHei UI" "PingFang SC" "Noto Sans SC"))
+  (defvar symbol-font (first-avail-font "Segoe UI Symbol" "Apple Symbols" "Noto Sans Symbols"))
 
-(set-face-attribute 'fixed-pitch nil :font monospace-font :height 120 :weight 'regular)
-(set-face-attribute 'variable-pitch nil :font serif-font :height 120 :weight 'regular)
-(set-face-attribute 'default nil :font monospace-font :height 120 :weight 'regular)
+  (set-face-attribute 'fixed-pitch nil :font monospace-font :height 120 :weight 'regular)
+  (set-face-attribute 'variable-pitch nil :font serif-font :height 120 :weight 'regular)
+  (set-face-attribute 'default nil :font monospace-font :height 120 :weight 'regular)
 
-(dolist (charset '(kana han cjk-misc bopomofo))
-  (set-fontset-font t charset chinese-font))
-(set-fontset-font t 'symbol symbol-font nil 'prepend)
+  (dolist (charset '(kana han cjk-misc bopomofo))
+    (set-fontset-font t charset chinese-font))
+  (set-fontset-font t 'symbol symbol-font nil 'prepend)
 
-(use-package solo-jazz-theme
-  :config
-  (load-theme 'solo-jazz t))
+  (use-package solo-jazz-theme
+    :config
+    (load-theme 'solo-jazz t)))
 
 ;; Decorate modeline
 (use-package spaceline
