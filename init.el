@@ -232,16 +232,17 @@
 
 
 (use-package smartparens
-  :after paren-face
-  :config
-  (smartparens-global-mode 1)
-  (show-smartparens-global-mode 1)
-  ;; For lisp files we enable paredit-like structure editing
   :hook
   (smartparens-mode . (lambda ()
                         (when (member major-mode sp-lisp-modes)
-                          (smartparens-strict-mode 1)
-                          (sp-use-paredit-bindings))))
+                          (smartparens-strict-mode 1))))
+  :config
+  (require 'smartparens-config)
+  ;; For lisp files we enable paredit-like structure editing
+  (dolist (it sp-paredit-bindings)
+    (define-key smartparens-strict-mode-map (read-kbd-macro (car it)) (cdr it)))
+  (smartparens-global-mode 1)
+  (show-smartparens-global-mode 1)
   :delight smartparens-mode)
 
 
