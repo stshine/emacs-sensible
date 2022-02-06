@@ -16,6 +16,9 @@
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("nongnu" . "https://elpa.nongnu.org/nongnu/")
                          ("melpa" . "https://melpa.org/packages/")))
+(setq package-archive-priorities '(("gnu" . 10)
+                                   ("nongnu" . 5)
+                                   ("melpa" . 0)))
 ;; We have to set this manaully due to a gnupg bug on windows.
 (setq package-gnupghome-dir (locate-user-emacs-file "elpa/gnupg"))
 (package-initialize)
