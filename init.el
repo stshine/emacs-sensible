@@ -49,8 +49,6 @@
   ;; User email address
   (user-mail-address "pu.stshine@gmail.com")
   ;;; UI tweaks
-  ;; Set Emacs background
-  (frame-background-mode 'light)
   ;; Inhibit startup screen and message
   (inhibit-startup-message t)
   (initial-scratch-message nil)
@@ -132,6 +130,9 @@
   (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font t charset chinese-font))
   (set-fontset-font t 'symbol symbol-font nil 'prepend)
+
+  ;; Set Emacs background
+  (setq frame-background-mode 'light)
 
   (use-package solo-jazz-theme
     :config
