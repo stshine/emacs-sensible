@@ -45,9 +45,9 @@
 (use-package emacs
   :custom
   ;; User name
-  (user-full-name "stshine")
+  (user-full-name "<your user name>")
   ;; User email address
-  (user-mail-address "pu.stshine@gmail.com")
+  (user-mail-address "<your email address>")
   ;;; UI tweaks
   ;; Inhibit startup screen and message
   (inhibit-startup-message t)
